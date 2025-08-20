@@ -24,9 +24,6 @@ Fedora: sudo dnf install python3 python3-pip
 macOS: brew install python3
 
 
-Install Dependencies:
-pip install -r requirements.txt
-
 Or directly:
 pip install cryptography typer keyring
 
@@ -40,7 +37,7 @@ cd file-protector
 Usage
 Protect a File
 Encrypt a file (e.g., secret.txt) with a password and optional backup:
-python3 EncDec.py protect secret.txt secret.enc --username alkane --backup-file bak.enc
+python3 Protect.py protect secret.txt secret.enc --username alkane --backup-file bak.enc
 
 
 Enter a strong password when prompted.
@@ -49,28 +46,28 @@ The original extension (.txt) is preserved in metadata.
 
 Decrypt a File
 Decrypt the file back to its original form:
-python3 EncDec.py decrypt secret.enc decrypted --username alkane
+python3 Protect.py decrypt secret.enc decrypted --username alkane
 
 
 Output: decrypted.txt with the original content and extension.
 
 Protect a Directory
 Encrypt all files in a directory:
-python3 EncDec.py protect my_folder protected_folder --username alkane --backup-file folder_bak.enc
+python3 Protect.py protect my_folder protected_folder --username alkane --backup-file folder_bak.enc
 
 
 Output: protected_folder with all files encrypted as .enc.
 
 Decrypt a Directory
 Decrypt all .enc files in a directory:
-python3 EncDec.py decrypt protected_folder decrypted_folder --username alkane
+python3 Protect.py decrypt protected_folder decrypted_folder --username alkane
 
 
 Output: decrypted_folder with files restored to their original extensions.
 
 Restore Password Backup
 If the keyring is cleared, restore the password from the backup file:
-python3 EncDec.py restore_backup bak.enc --username alkane
+python3 Protect.py restore_backup bak.enc --username alkane
 
 
 Restores the password to the system keyring for the specified username.
@@ -80,10 +77,10 @@ Example
 echo "This is my secret text!" > secret.txt
 
 # Encrypt
-python3 EncDec.py protect secret.txt secret.enc --username alkane --backup-file bak.enc
+python3 Protect.py protect secret.txt secret.enc --username alkane --backup-file bak.enc
 
 # Decrypt
-python3 EncDec.py decrypt secret.enc decrypted --username alkane
+python3 Protect.py decrypt secret.enc decrypted --username alkane
 
 # Verify
 cat decrypted.txt
